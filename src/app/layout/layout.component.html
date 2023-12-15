@@ -1,0 +1,101 @@
+<header class="top-navbar page-header">
+
+  <nav class="nvnavbar-expand-lg navbar-dark d-flex justify-content-between" style="background-color:#7851A9;">
+
+    <div class="flex-grow-1 d-flex align-items-center">
+      <h1 class="text-light me-4 ms-3 custom-font-size mt-3 header-font-weight">
+        <a class="text-light no-underline" routerLink="/">Civic Circle</a>
+      </h1>
+
+      <div class="btn-group">
+        <div class="d-flex align-items-center">
+          <div *ngIf="isLoggedIn$ | async; else placeholder" class="btn-group">
+            <a class="btn btn-link active mr-3 header-font-weight home-link tooltip" href="#" routerLink="/events"
+              routerLinkActive="active" ariaCurrentWhenActive="page" data-tooltip="Home">
+              <i class="bi bi-house-door-fill"></i>
+            </a>
+            <a class="btn btn-link active mr-3 header-font-weight home-link tooltip" href="#" routerLink="/interested"
+              routerLinkActive="active" ariaCurrentWhenActive="page" data-tooltip="Interested">
+              <i class="bi bi-heart-fill"></i>
+            </a>
+            <a class="btn btn-link active mr-3 header-font-weight home-link tooltip" (click)="openAddNewEventDialog()"
+              routerLinkActive="active" ariaCurrentWhenActive="page" data-tooltip="Add New">
+              <i class="bi bi-plus-square-fill"></i>
+            </a>
+          </div>
+
+          <ng-template #placeholder>
+            <div style="width: 200px;"></div>
+          </ng-template>
+        </div>
+        <div class="d-flex">
+          <input class="form-control col col-lg-2 ml-2 custom-rounded-search-bar" placeholder="Search"
+            aria-label="Search" (input)="onSearchChange($any($event.target).value)">
+          <div *ngIf="isLoggedIn$ | async" ngbDropdown class="d-inline-block" container="body"
+            #advancedSearchDropdown="ngbDropdown">
+            <button class="btn btn-outline-light custom-rounded-button" id="dropdownMenu" ngbDropdownToggle
+              type="button">
+              <i class="bi bi-funnel-fill filter-icon"></i>
+            </button>
+            <div class="ngb-dropdown-menu advanced-search-menu" ngbDropdownMenu aria-labelledby="dropdownMenu">
+              <form #eventForm="ngForm" (ngSubmit)="submitAdvancedSearch()" class="p-3">
+                <div class="mb-3 d-flex align-items-center">
+                  <label for="daysInput" class="form-label me-2">Within the next</label>
+                  <input type="text" id="daysInput" class="form-control validate" [(ngModel)]="nextDaysValue"
+                    name="daysInput" placeholder="Days">
+                  <label class="form-label">day(s)</label>
+                </div>
+
+                <div class="mb-3 d-flex align-items-center">
+                  <label for="milesInput" class="form-label me-2">Within</label>
+                  <input type="text" id="milesInput" class="form-control validate" [(ngModel)]="withinMilesValue"
+                    name="milesInput" placeholder="Miles">
+                  <label class="form-label">miles</label>
+                </div>
+
+                <div class="md-form">
+                  <label for="eventType">Event Type</label>
+                  <i class="fas fa-tags prefix grey-text"></i>
+                  <select id="eventType" class="form-control" [(ngModel)]="eventTypeValue" name="eventType" required>
+                    <option value="" disabled selected>Select Event Type</option>
+                    <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
+                  </select>
+                </div>
+
+                <div class="mt-3 d-flex align-items-center">
+                  <label class="form-check-label mr-2" for="verifiedPoster">Verified Poster</label>
+                  <input type="checkbox" id="verifiedPoster" class="form-check-input validate"
+                    [(ngModel)]="verifiedPoster" name="verifiedPoster">
+                </div>
+                <button class="btn btn-light submit-btn mt-3 header-font-weight" type="submit">Submit</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <button *ngIf="(isLoggedIn$ | async) === false" class="btn btn-light sign-in-btn mr-3 header-font-weight"
+        (click)="openLoginDialog()">Sign In</button>
+      <div *ngIf="isLoggedIn$ | async" ngbDropdown class="d-inline-block" container="body">
+        <button class="btn" id="dropdownMenu" ngbDropdownToggle>
+          <a class="btn btn-link active mr-3 header-font-weight home-link tooltip" href="#" routerLink="/events"
+            routerLinkActive="active" ariaCurrentWhenActive="page" data-tooltip="My Account">
+            <i class="bi bi-person-fill" style="font-size: 25px"></i>
+          </a>
+        </button>
+        <div class="ngb-dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenu">
+          <div class="mx-3 header-font-weight">{{ getEmail() }}</div>
+          <button class="btn btn-light sign-out-btn header-font-weight" type="submit"
+            style="margin-left: auto; margin-right: auto; display: block;" (click)="logout()">Sign Out</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

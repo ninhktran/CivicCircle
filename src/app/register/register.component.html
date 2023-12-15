@@ -1,0 +1,33 @@
+<div class="flex justify-content-center mt-8" [formGroup]="form">
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+    <div class="text-center mb-2">
+      <div class="logo">
+        <img src="assets/logo.jpg" alt="Your Logo" style="width: 200px; height: auto;" />
+      </div>
+      <div class="text-900 text-3xl font-medium mb-3">Sign Up</div>
+
+      <span class="text-600 font-medium line-height-3">Already have an account?</span>
+      <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" [routerLink]="['/login']">Log In!</a>
+    </div>
+
+    <div>
+      <label for="email" class="block text-900 font-medium mb-2">Email</label>
+      <input formControlName="email" id="email" type="text" placeholder="Email address" pInputText
+        class="w-full mb-3" />
+
+      <label for="password" class="block text-900 font-medium mb-2">Password</label>
+      <input formControlName="password" id="password" type="password" placeholder="Password" pInputText
+        class="w-full mb-3" />
+
+      <div class="flex align-items-center mb-6">
+        <div class="flex align-items-center"></div>
+        <a [routerLink]="['/']" class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">
+          Sign in another way
+        </a>
+      </div>
+
+      <button (click)="createUser()" pButton pRipple label="Sign Up" icon="pi pi-user"
+        class="w-full bg-purple sign-in-btn"></button>
+    </div>
+  </div>
+</div>

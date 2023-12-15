@@ -1,0 +1,93 @@
+<div class="fixed-header-bar">
+    <h1 class="header-font-weight">Events</h1>
+</div>
+<google-map class="fixed-map" height="85vh" width="50vw" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+    (mapMousemove)="move($event)">
+    <map-marker *ngFor="let marker of markers" [position]="marker.position" [title]="marker.title">
+        <map-info-window>{{ marker.info }}</map-info-window>
+    </map-marker>
+</google-map>
+
+
+<div class="row scrolling-events" style="width: 50%">
+    <div *ngFor="let event of events; let i = index">
+        <div class="pl-3 mb-3">
+            <div class="card-header" role="button" (click)="showEvent(event.id)">
+                <div style="display: flex; justify-content: space-between;">
+                    <h1 class="card-title">{{event.Name}}</h1>
+                    <div ngbDropdown class="d-inline-block" container="body">
+                        <button class="btn" id="dropdownMenu" ngbDropdownToggle (click)="$event.stopPropagation()">
+                            <i class="bi bi-three-dots" style="font-size: 25px;"></i>
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownMenu">
+                            <button ngbDropdownItem (click)="toggleEventVisibility(event.id)">
+                                {{event.isVisible ? 'Show' : 'Hide'}}
+                            </button>
+                            <button *ngIf="currentUser?.email === event.poster" ngbDropdownItem
+                                (click)="startEditing(event)">Edit</button>
+                            <button *ngIf="currentUser?.email === event.poster" ngbDropdownItem
+                                (click)="deleteEvent(event.id)">Delete</button>
+                            <button ngbDropdownItem (click)="reportEvent(event.id)">Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body" *ngIf="event.isVisible === undefined || event.isVisible === false">
+                <!-- Display the event details -->
+                <div *ngIf="editingEventId !== event.id">
+                    <p class="card-text">Event type: {{event.EventType}}</p>
+                    <p class="card-text">Description: {{event.Description}}</p>
+                    <p class="card-text">Location: {{event.Location}}</p>
+                    <p class="card-text">Date and Time: {{event.Date}}</p>
+                    <p class="card-text">Poster: {{event.poster}}</p>
+                    <button *ngIf="isEventInterested(event.id); else interestedButton"
+                        (click)="removeFromInterestedList(event.id)" class="btn"
+                        style="background-color: #FCE491;">Uninterested</button>
+                    <ng-template #interestedButton>
+                        <button (click)="addToInterestedList(event.id)" class="btn"
+                            style="background-color: #FCE491;">Interested</button>
+                    </ng-template>
+                </div>
+
+                <!-- Edit form for the current event -->
+                <div *ngIf="editingEventId === event.id">
+                    <form (ngSubmit)="submitEditedEvent()">
+                        <div class="form-group">
+                            <label for="eventName">Event Name</label>
+                            <input type="text" class="form-control" id="eventName" [(ngModel)]="editedEvent.Name"
+                                name="eventName">
+                        </div>
+                        <!-- Add other input fields for editing event details like EventType, Description, etc. -->
+                        <div class="form-group">
+                            <label for="eventType">Event Type</label>
+                            <input type="text" class="form-control" id="eventType" [(ngModel)]="editedEvent.EventType"
+                                name="eventType">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" [(ngModel)]="editedEvent.Description"
+                                name="description"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location" [(ngModel)]="editedEvent.Location"
+                                name="location">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dateTime">Date and Time</label>
+                            <input type="datetime-local" class="form-control" id="dateTime"
+                                [(ngModel)]="editedEvent.Date" name="dateTime">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

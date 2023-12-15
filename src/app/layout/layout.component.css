@@ -1,0 +1,119 @@
+.sign-in-btn {
+    color: #FCE491;
+    background-color: #7851A9;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.sign-in-btn:hover {
+    background-color: #FCE491;
+    color: #7851A9;
+}
+
+.sign-out-btn {
+    color: #FCE491;
+    background-color: #7851A9;
+    border: none;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 100px;
+
+}
+
+
+.sign-out-btn:hover {
+    background-color: #FF7F7F;
+    color: #7851A9;
+}
+
+.custom-font-size {
+    font-size: 50px;
+}
+
+.home-link {
+    color: #fff !important;
+    /* make the text white */
+    font-size: 1.2rem !important;
+    /* make the text slightly bigger */
+}
+
+.home-link:active,
+.home-link[ariaCurrentWhenActive="page"] {
+    opacity: 0.7;
+    /* make the button dim when clicked and keep that until switched to a different page */
+}
+
+.ngb-dropdown-menu {
+    border-radius: 0;
+}
+
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.custom-rounded-search-bar {
+    border-top-right-radius: 0rem !important;
+    border-bottom-right-radius: 0rem !important;
+    height: 40px;
+    width: 40rem;
+}
+
+.custom-rounded-button {
+    border-top-left-radius: 0rem !important;
+    border-bottom-left-radius: 0rem !important;
+    height: 40px;
+
+}
+
+.custom-rounded-button:hover .filter-icon {
+    color: #7851A9;
+}
+
+.filter-icon {
+    color: rgb(250, 250, 250);
+}
+
+.top-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Ensures navbar stays on top of other content */
+}
+
+main {
+    padding-top: 60px;
+    /* Adjust this value based on the height of your navbar */
+}
+
+.advanced-search-menu {
+    min-width: 27.8rem;
+}
+
+.submit-btn {
+    color: #FCE491;
+    background-color: #7851A9;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}

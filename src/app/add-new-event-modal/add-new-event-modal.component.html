@@ -1,0 +1,57 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content" style="max-width: 800px">
+    <div class="modal-header text-center">
+      <h4 class="modal-title w-100 font-weight-bold mt-3 header-font-weight">Add New Event</h4>
+    </div>
+    <div class="modal-body mx-3">
+      <form #eventForm="ngForm" (ngSubmit)="submitAddNewEventForm()">
+        <!-- Event Name -->
+        <label for="eventName">Event Name</label>
+        <div class="md-form">
+          <i class="fas fa-calendar prefix grey-text"></i>
+          <input type="text" id="eventName" class="form-control validate" [(ngModel)]="eventName" name="eventName"
+            required>
+        </div>
+
+        <!-- Event Type -->
+        <div class="md-form">
+          <label for="eventType">Event Type</label>
+          <i class="fas fa-tags prefix grey-text"></i>
+          <select id="eventType" class="form-control" [(ngModel)]="eventType" name="eventType" required>
+            <option value="" disabled selected>Select Event Type</option>
+            <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        <!-- Description -->
+        <div class="md-form mb-3">
+          <label for="description">Description</label>
+          <i class="fas fa-pencil prefix grey-text"></i>
+          <textarea id="description" class="md-textarea form-control" rows="3" [(ngModel)]="description"
+            name="description" required></textarea>
+        </div>
+
+        <!-- Location -->
+        <div class="md-form">
+          <label for="location">Location</label>
+          <i class="fas fa-map-marker prefix grey-text"></i>
+          <input type="text" id="location" class="form-control validate" [(ngModel)]="location" name="location"
+            required>
+        </div>
+
+        <!-- Date and Time -->
+        <div class="md-form">
+          <label for="dateTime">Date and Time</label>
+          <i class="fas fa-clock prefix grey-text"></i>
+          <input type="datetime-local" id="dateTime" class="form-control validate" [(ngModel)]="dateTime"
+            name="dateTime" required>
+        </div>
+        <hr>
+        <!-- Buttons -->
+        <div class="modal-footer d-flex justify-content-right">
+          <button class="btn btn-light post-btn mt-3 header-font-weight" type="submit">Post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

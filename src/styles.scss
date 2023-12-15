@@ -1,0 +1,66 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+
+body {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.p-button.auth-button {
+  width: 242px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.bg-purple {
+  background-color: #7851A9 !important;
+}
+
+.bg-purple:hover {
+  background-color: #FCE491 !important;
+  color: #7851A9 !important;
+}
+
+.input-field:hover,
+.input-field:focus {
+  border: 1px solid #FCE491 !important;
+  box-shadow: 0 0 10px #FCE491 !important;
+  outline: none !important;
+}
+
+.header-font-weight {
+  font-weight: bold !important;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px;
+  border-radius: 4px;
+  background-color: #000000;
+  color: white;
+  white-space: nowrap;
+  font-size: 0.6em;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

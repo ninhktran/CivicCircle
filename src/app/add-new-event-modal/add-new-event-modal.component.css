@@ -1,0 +1,76 @@
+.modal-body {
+    padding: 20px;
+}
+
+.auth-button {
+    background-color: #7851A9;
+    color: white;
+    /* This sets the text color. Adjust as needed. */
+    border: none;
+    /* This removes the default button border. */
+}
+
+.auth-button:hover {
+    background-color: #5D3F87;
+    /* This sets a darker tone when hovering over the button. Adjust as needed. */
+}
+
+.agreement {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.agreement a {
+    color: #7851A9;
+    text-decoration: none;
+}
+
+.agreement a:hover {
+    text-decoration: underline;
+}
+
+.modal-content {
+    width: auto;
+    /* This will make the width of the modal just enough to fit its content */
+    max-width: 300px;
+    /* This will limit the maximum width of the modal */
+    margin: auto;
+    /* This will center the modal horizontally */
+}
+
+.form-group {
+    display: flex;
+    float: left;
+}
+
+.form-general {
+    /* center the elements in the form */
+    margin: auto;
+    /* make the form take up the entire width of the modal */
+    width: 100%;
+}
+
+.modal {
+    background-color: aquamarine;
+}
+
+.post-btn {
+    color: #FCE491;
+    background-color: #7851A9;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+/* .sign-in-btn:hover {
+    background-color: #FCE491;
+    color: #7851A9;
+} */

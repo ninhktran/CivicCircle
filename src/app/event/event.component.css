@@ -1,0 +1,63 @@
+.card-header {
+    padding-bottom: 0rem;
+}
+
+.card-body {
+    padding-top: 1rem;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+
+.fixed-header-bar {
+    position: fixed;
+    top: 7%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 500;
+    /* To ensure it's above other content but below any dropdowns or modals */
+    padding: 15px 0;
+    /* Adjust this padding if necessary */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Optional: adds a subtle shadow for depth */
+    margin-bottom: 0;
+    /* Ensure there's no bottom margin */
+}
+
+.header-font-weight {
+    margin-left: 5%;
+    /* Maintain the original left margin */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.scrolling-events {
+    position: relative;
+    z-index: 200;
+    /* Above the fixed map */
+    background-color: #fff;
+    /* Optional: for readability */
+    margin-top: 0;
+    /* Remove top margin */
+    width: 50vw;
+    /* Set width to 50% of the viewport width */
+    top: 75px;
+}
+
+
+.fixed-map {
+    position: fixed;
+    top: 120px;
+    /* Adjust based on the combined height of your navbar and header */
+    right: 0;
+    /* Align to the right side of the screen */
+    width: 50vw;
+    /* Set width to 50% of the viewport width */
+    height: calc(80vh - 100vw);
+    /* Adjust height as needed */
+    z-index: 100;
+    /* Below the events container */
+}
